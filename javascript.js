@@ -33,9 +33,9 @@ class RangeValidator {
       if (typeof value !== 'number') {
          throw new TypeError('inccorect data type, number expect')
       }
-      // if (value > to) { // как обратиться к to?
-      //    throw new RangeError('from has to be less than to');
-      // }
+      if (value > this.to) { // как обратиться к to?
+         throw new RangeError('from has to be less than to');
+      }
       this._from = value
    }
    get from() {
@@ -45,9 +45,9 @@ class RangeValidator {
       if (typeof value !== 'number') {
          throw new TypeError('inccorect data type, number expect')
       }
-      // if (value < from) { // как обратиться к from?
-      //    throw new RangeError('to has to be higher than from')
-      // }
+      if (value < this.from) { // как обратиться к from?
+         throw new RangeError('to has to be higher than from')
+      }
       this._to = value;
    }
    get to() {
@@ -60,13 +60,11 @@ class RangeValidator {
       return number >= this.from && number <= this.to;
    }
 }
-const range1 = new RangeValidator(6, 5.5);
+const range1 = new RangeValidator(1, 10);
+
 
 
 console.log(range1.range);
 
 console.log(range1.validate(2));
-console.log();
-
-
 
